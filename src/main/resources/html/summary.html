@@ -1,0 +1,145 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Execution Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .report-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .repo-name {
+            margin-top: 5px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+        .header .details {
+            text-align: left;
+        }
+        .header .details p {
+            margin: 2px 0;
+            font-size: 12px;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            margin: 60px 0 60px;
+        }
+        .summary div {
+            text-align: center;
+            flex: 1;
+        }
+        .summary div h2 {
+            margin: 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .summary .passed h2 {
+            color: green;
+        }
+        .summary .failed h2 {
+            color: red;
+        }
+        .summary .skipped h2 {
+            color: orange;
+        }
+        .summary div p {
+            margin: 5px 0 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+        .feature {
+            margin-top: 30px;
+        }
+        .feature h4 {
+            font-size: 14px;
+            background-color: #f9f9f9;
+            margin: 0 0 10px;
+            padding: 10px;
+        }
+        .scenario {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .scenario-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .scenario-duration {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .status {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .status.passed {
+            color: green;
+        }
+        .status.failed {
+            color: red;
+        }
+        .status.skipped {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+    <div class="header">
+        <div>
+            <h1>Test Execution Report</h1>
+            <div class="repo-name">replaceRepoName</div>
+        </div>
+        <div class="details">
+            <p><strong>Date: </strong>replaceDate</p>
+            <p><strong>Environment: </strong>replaceEnvironment</p>
+
+            <p><strong>Duration: </strong>replaceTotalDuration</p>
+        </div>
+    </div>
+
+    <div class="summary">
+        <div class="scenarios">
+            <h2>Scenarios</h2>
+            <p>replaceTC</p>
+        </div>
+        <div class="passed">
+            <h2>Passed</h2>
+            <p>replacePC</p>
+        </div>
+        <div class="failed">
+            <h2>Failed</h2>
+            <p>replaceFC</p>
+        </div>
+        <div class="skipped">
+            <h2>Skipped</h2>
+            <p>replaceSC</p>
+        </div>
+    </div>
