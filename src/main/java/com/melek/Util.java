@@ -4,6 +4,10 @@ import java.time.Duration;
 
 public class Util {
 
+    private Util() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static String getFormattedDuration(Long durationMs) {
 
         // Saat, dakika, saniye ve kalan milisaniyeyi hesapla

@@ -10,6 +10,10 @@ import java.util.List;
 
 public class JsonToFeature {
 
+    private JsonToFeature() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     protected static List<Feature> parseFeatures(String jsonContent) {
         List<Feature> featureList = new ArrayList<>();
         JSONArray jsonArray = new JSONArray(jsonContent);
@@ -24,12 +28,12 @@ public class JsonToFeature {
 
             for (int j = 0; j < elementsArray.length(); j++) {
                 JSONObject scenarioObject = elementsArray.getJSONObject(j);
-
+                String keyword = "keyword";
                 // Elements (Scenarios) parsing, sadece "keyword" değeri "scenario ve scenario outline" olanlar eklenecek
-                if ("Scenario".equalsIgnoreCase(scenarioObject.getString("keyword")) || "Scenario Outline".equalsIgnoreCase(scenarioObject.getString("keyword"))) {
+                if ("Scenario".equalsIgnoreCase(scenarioObject.getString(keyword)) || "Scenario Outline".equalsIgnoreCase(scenarioObject.getString(keyword))) {
                     Scenario scenario = new Scenario();
                     scenario.setName(scenarioObject.getString("name"));
-                    scenario.setKeyword(scenarioObject.getString("keyword"));
+                    scenario.setKeyword(scenarioObject.getString(keyword));
 
                     // Steps parsing ve senaryo durumunu ve süresini belirle
                     JSONArray stepsArray = scenarioObject.getJSONArray("steps");

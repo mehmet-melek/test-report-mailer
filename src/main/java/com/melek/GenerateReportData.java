@@ -14,6 +14,9 @@ import static com.melek.Util.getFormattedDuration;
 
 public class GenerateReportData {
 
+    private GenerateReportData() {
+        throw new UnsupportedOperationException("Utility class");
+    }
     private static Report report = new Report();
 
     protected static Report createReportData(List<Feature> featureList, Instant startTime) {
@@ -61,7 +64,6 @@ public class GenerateReportData {
                         skipped++;
                         break;
                     default:
-                        // Belirtilen durumların dışında kalanları da "skipped" olarak sayıyoruz.
                         skipped++;
                 }
             }

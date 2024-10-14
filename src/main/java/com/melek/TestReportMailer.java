@@ -13,6 +13,11 @@ import java.util.List;
 
 public class TestReportMailer {
 
+    private TestReportMailer() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
+
     public static void sendExecutionReportAsEmail() {
         try {
             if (canSendEmailReport()) {

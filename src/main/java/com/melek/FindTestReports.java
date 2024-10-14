@@ -10,14 +10,17 @@ import java.util.stream.Stream;
 
 public class FindTestReports {
 
+    private FindTestReports() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     protected static List<Path> getJsonFiles() throws IOException {
         String reportDirectoryPath = "target/test-report";
         try (Stream<Path> paths = Files.walk(Paths.get(reportDirectoryPath))) {
             return paths
-                    .filter(Files::isRegularFile)  // Sadece dosyalar
-                    .filter(path -> path.toString().endsWith(".json"))  // .json uzantılı dosyalar
-                    .collect(Collectors.toList());
+                    .filter(Files::isRegularFile)
+                    .filter(path -> path.toString().endsWith(".json"))
+                    .toList();
         }
     }
-
 }

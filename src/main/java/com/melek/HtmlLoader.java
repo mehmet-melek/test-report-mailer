@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 
 public class HtmlLoader {
 
+    private HtmlLoader() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     protected static String loadResourceFile(String resourcePath) throws IOException {
         InputStream inputStream = HtmlLoader.class.getClassLoader().getResourceAsStream(resourcePath);
         if (inputStream == null) {

@@ -12,13 +12,17 @@ import java.nio.file.StandardOpenOption;
 
 public class HtmlCreator {
 
+    private HtmlCreator() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     protected static void createHtmlReport(Report report) throws IOException {
 
 
 
         String summaryHtmlPath = "html/summary.html";
         String featureHtmlPath = "html/feature.html";
-        String ScenarioHtmlPath = "html/scenario.html";
+        String scenarioHtmlPath = "html/scenario.html";
         String outputFilePath = "target/test-report-mail/report.html";
 
         String summaryHtml = HtmlLoader.loadResourceFile(summaryHtmlPath);
@@ -35,33 +39,33 @@ public class HtmlCreator {
                 .replace("replaceFC", String.valueOf(report.getFailedCount()))
                 .replace("replaceSC", String.valueOf(report.getSkippedCount()));
 
-        String finalHtmlContent = summaryHtml;
-
         String featureHtml = HtmlLoader.loadResourceFile(featureHtmlPath);
-        String scenarioHtml = HtmlLoader.loadResourceFile(ScenarioHtmlPath);
+        String scenarioHtml = HtmlLoader.loadResourceFile(scenarioHtmlPath);
+
+        StringBuilder finalHtmlContentBuilder = new StringBuilder(summaryHtml);
 
         for (Feature feature : report.getFeatures()) {
             String addedFeatureHtmlContent = featureHtml.replace("replaceFeatureName", feature.getName());
-            finalHtmlContent += "\n" + addedFeatureHtmlContent;
+            finalHtmlContentBuilder.append("\n").append(addedFeatureHtmlContent);
+
             for (Scenario scenario : feature.getScenarios()) {
                 String addedScenarioHtmlContent = scenarioHtml
                         .replace("replaceScenarioName", scenario.getName())
                         .replace("replaceScenarioDuration", scenario.getDuration())
                         .replace("replaceScenarioStatus", scenario.getStatus())
                         .replace("replaceScenarioClassStatus", scenario.getStatus());
-                finalHtmlContent += "\n" + addedScenarioHtmlContent;
+                finalHtmlContentBuilder.append("\n").append(addedScenarioHtmlContent);
             }
         }
 
         String close = """
-                </div>
-                </body></html>
-                """;
-        finalHtmlContent += close;
+        </div>
+        </body></html>
+        """;
+        finalHtmlContentBuilder.append(close);
 
+        String finalHtmlContent = finalHtmlContentBuilder.toString();
         createHtmlFile(outputFilePath,finalHtmlContent);
-
-        System.out.println("HTML dosyası başarıyla oluşturuldu: " + outputFilePath);
 
     }
 

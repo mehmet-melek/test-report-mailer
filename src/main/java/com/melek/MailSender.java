@@ -10,6 +10,10 @@ import java.util.Properties;
 
 public class MailSender {
 
+    private MailSender() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static void sendHtmlReportEmail(String toEmail, String subject) throws IOException, MessagingException {
 
         String smtpHost = "smtp.example.com";
